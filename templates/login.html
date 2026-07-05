@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="loginApp">
+
+    <h2>Login</h2>
+
+    <form @submit.prevent="loginUser">
+
+        <input type="email" placeholder="Email" v-model="email" class="form-control mb-2">
+
+        <input type="password" placeholder="Password" v-model="password" class="form-control mb-2">
+
+        <button type="submit" class="btn btn-primary">
+            Login
+        </button>
+
+    </form>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+
+{% endblock %}

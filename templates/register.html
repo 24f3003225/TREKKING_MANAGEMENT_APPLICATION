@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="registerApp">
+
+    <h2>Register</h2>
+
+    <form @submit.prevent="registerUser">
+
+        <input type="text" placeholder="Name" v-model="name" class="form-control mb-2">
+
+        <input type="email" placeholder="Email" v-model="email" class="form-control mb-2">
+
+        <input type="text" placeholder="Phone" v-model="phone" class="form-control mb-2">
+
+        <input type="password" placeholder="Password" v-model="password" class="form-control mb-2">
+
+        <button type="submit" class="btn btn-success">
+            Register
+        </button>
+
+    </form>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+
+{% endblock %}
