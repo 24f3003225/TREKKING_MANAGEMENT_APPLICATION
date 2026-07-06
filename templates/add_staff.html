@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="staffApp" class="container mt-4">
+
+    <h2>Add Trek Staff</h2>
+
+    <form @submit.prevent="addStaff">
+
+        <input type="text" class="form-control mb-3" placeholder="Name" v-model="name">
+
+        <input type="email" class="form-control mb-3" placeholder="Email" v-model="email">
+
+        <input type="text" class="form-control mb-3" placeholder="Phone" v-model="phone">
+
+        <input type="password" class="form-control mb-3" placeholder="Password" v-model="password">
+
+        <button class="btn btn-success">
+            Add Staff
+        </button>
+
+    </form>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/add_staff.js') }}"></script>
+
+{% endblock %}
