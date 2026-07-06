@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="statusApp" class="container mt-4">
+
+    <h2>Update Trek Status</h2>
+
+    <div class="mb-3">
+        <label>Trek Name</label>
+        <input type="text" class="form-control" :value="trek.name" readonly>
+    </div>
+
+    <div class="mb-3">
+        <label>Current Status</label>
+        <input type="text" class="form-control" :value="trek.status" readonly>
+    </div>
+
+    <div class="mb-3">
+        <label>New Status</label>
+
+        <select class="form-control" v-model="newStatus">
+            <option value="Approved">
+                Approved
+            </option>
+
+            <option value="Closed">
+                Closed
+            </option>
+
+            <option value="Started">
+                Started
+            </option>
+
+            <option value="Ongoing">
+                Ongoing
+            </option>
+
+            <option value="Completed">
+                Completed
+            </option>
+        </select>
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-success" @click="updateStatus">
+
+        Update Status
+
+    </button>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/update_trek_status.js') }}"></script>
+
+{% endblock %}

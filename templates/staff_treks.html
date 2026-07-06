@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="staffTreksApp" class="container mt-4">
+
+    <h2>
+        My Treks
+    </h2>
+
+    <table class="table table-bordered">
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Difficulty</th>
+                <th>Duration</th>
+                <th>Slots</th>
+                <th>Status</th>
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr v-for="trek in treks" :key="trek.id">
+
+                <td v-text="trek.id"></td>
+
+                <td v-text="trek.name"></td>
+
+                <td v-text="trek.location"></td>
+
+                <td v-text="trek.difficulty"></td>
+
+                <td v-text="trek.duration"></td>
+
+                <td v-text="trek.available_slots"></td>
+
+                <td v-text="trek.status"></td>
+
+                <td>
+
+                    <button class="btn btn-primary btn-sm" @click="viewParticipants(trek.id)">
+                        Participants
+                    </button>
+
+                    <button class="btn btn-success btn-sm" @click="updateStatus(trek.id)">
+                        Status
+                    </button>
+                    <button class="btn btn-warning btn-sm" @click="updateSlots(trek.id)">
+                        Update Slots
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/staff_treks.js') }}"></script>
+
+{% endblock %}

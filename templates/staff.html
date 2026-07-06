@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="staffApp" class="container mt-4">
+
+    <div class="d-flex justify-content-between mb-3">
+
+        <h2>All Trek Staff</h2>
+
+        <input type="text" class="form-control w-25" placeholder="Search Staff" v-model="search" @keyup="loadStaffs">
+
+    </div>
+
+    <table class="table table-bordered">
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr v-for="staff in staffs" :key="staff.id">
+
+                <td v-text="staff.id"></td>
+                <td v-text="staff.name"></td>
+                <td v-text="staff.email"></td>
+                <td v-text="staff.phone"></td>
+
+                <td>
+
+                    <span v-if="staff.active" class="badge bg-success">
+                        Active
+                    </span>
+
+                    <span v-else class="badge bg-danger">
+                        Inactive
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button v-if="staff.active" class="btn btn-danger btn-sm" @click="deactivateStaff(staff.id)">
+                        Deactivate
+                    </button>
+
+                    <button v-else class="btn btn-success btn-sm" @click="activateStaff(staff.id)">
+                        Activate
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/staff.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="treksApp" class="container mt-4">
+
+    <h2>All Treks</h2>
+
+    <table class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Difficulty</th>
+                <th>Duration</th>
+                <th>Slots</th>
+                <th>Assigned Staff</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr v-for="trek in treks" :key="trek.id">
+
+                <td v-text="trek.id"></td>
+                <td v-text="trek.name"></td>
+                <td v-text="trek.location"></td>
+                <td v-text="trek.difficulty"></td>
+                <td v-text="trek.duration"></td>
+                <td v-text="trek.available_slots"></td>
+                <td v-text="trek.staff_name"></td>
+                <td v-text="trek.status"></td>
+
+                <td>
+
+                    <button class="btn btn-warning btn-sm" @click="editTrek(trek.id)">
+                        Edit
+                    </button>
+
+                    <button class="btn btn-danger btn-sm" @click="deleteTrek(trek.id)">
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/treks.js') }}"></script>
+
+{% endblock %}
