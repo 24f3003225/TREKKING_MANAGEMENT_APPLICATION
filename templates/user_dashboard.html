@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="userDashboardApp" class="container mt-4">
+
+    <h2 class="mb-4">
+        User Dashboard
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div class="card text-center">
+
+                <div class="card-body">
+
+                    <h5>Total Available Treks</h5>
+
+                    <h2 v-text="totalTreks"></h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card text-center">
+
+                <div class="card-body">
+
+                    <h5>My Bookings</h5>
+
+                    <h2 v-text="totalBookings"></h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card text-center">
+
+                <div class="card-body">
+
+                    <h5>Active Treks</h5>
+
+                    <h2 v-text="activeTreks"></h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/user_dashboard.js') }}"></script>
+
+{% endblock %}

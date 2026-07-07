@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="usersApp" class="container mt-4">
+
+    <div class="d-flex justify-content-between mb-3">
+
+        <h2>All Users</h2>
+
+        <input type="text" class="form-control w-25" placeholder="Search User" v-model="search" @keyup="loadUsers">
+
+    </div>
+
+    <table class="table table-bordered">
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr v-for="user in users" :key="user.id">
+
+                <td v-text="user.id"></td>
+
+                <td v-text="user.name"></td>
+
+                <td v-text="user.email"></td>
+
+                <td v-text="user.phone"></td>
+
+                <td>
+
+                    <span v-if="user.active" class="badge bg-success">
+                        Active
+                    </span>
+
+                    <span v-else class="badge bg-danger">
+                        Inactive
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button v-if="user.active" class="btn btn-danger btn-sm" @click="deactivateUser(user.id)">
+                        Deactivate
+                    </button>
+
+                    <button v-else class="btn btn-success btn-sm" @click="activateUser(user.id)">
+                        Activate
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/users.js') }}"></script>
+
+{% endblock %}

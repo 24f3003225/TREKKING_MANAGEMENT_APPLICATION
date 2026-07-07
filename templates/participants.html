@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="participantsApp" class="container mt-4">
+
+    <h2>
+        Trek Participants
+    </h2>
+
+    <table class="table table-bordered">
+
+        <thead>
+
+            <tr>
+
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr v-for="user in participants" :key="user.user_id">
+
+                <td v-text="user.user_id"></td>
+
+                <td v-text="user.name"></td>
+
+                <td v-text="user.email"></td>
+
+                <td v-text="user.phone"></td>
+
+                <td v-text="user.booking_status"></td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/participants.js') }}"></script>
+
+{% endblock %}

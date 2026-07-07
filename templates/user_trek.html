@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="treksApp" class="container mt-4">
+
+    <h2 class="mb-4">
+        Available Treks
+    </h2>
+    <div class="row mb-3">
+
+        <div class="col-md-3">
+
+            <select class="form-control" v-model="difficulty">
+
+                <option value="">
+                    All Difficulty
+                </option>
+
+                <option value="Easy">
+                    Easy
+                </option>
+
+                <option value="Moderate">
+                    Moderate
+                </option>
+
+                <option value="Hard">
+                    Hard
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <input type="text" class="form-control" placeholder="Location" v-model="location">
+
+        </div>
+
+        <div class="col-md-3">
+
+            <input type="number" class="form-control" placeholder="Max Duration" v-model="duration">
+
+        </div>
+
+        <div class="col-md-3">
+
+            <button class="btn btn-primary" @click="loadTreks">
+                Search
+            </button>
+
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-4 mb-4" v-for="trek in treks" :key="trek.id">
+
+            <div class="card h-100">
+
+                <div class="card-body">
+
+                    <h5 class="card-title" v-text="trek.name"></h5>
+
+                    <p>
+
+                        <strong>Location:</strong>
+
+                        <span v-text="trek.location"></span>
+
+                    </p>
+
+                    <p>
+
+                        <strong>Difficulty:</strong>
+
+                        <span v-text="trek.difficulty"></span>
+
+                    </p>
+
+                    <p>
+
+                        <strong>Duration:</strong>
+
+                        <span v-text="trek.duration"></span>
+
+                        Days
+
+                    </p>
+
+                    <p>
+
+                        <strong>Available Slots:</strong>
+
+                        <span v-text="trek.available_slots"></span>
+
+                    </p>
+
+                    <p>
+
+                        <strong>Description:</strong>
+
+                        <span v-text="trek.description"></span>
+
+                    </p>
+
+                    <button class="btn btn-primary" @click="bookTrek(trek.id)">
+                        Book Now
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/user_treks.js') }}"></script>
+
+{% endblock %}

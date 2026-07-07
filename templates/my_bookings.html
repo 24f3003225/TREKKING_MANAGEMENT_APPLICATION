@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="bookingApp" class="container mt-4">
+
+    <h2>My Bookings</h2>
+
+    <div class="mb-3">
+
+        <button class="btn btn-success" @click="exportHistory">
+
+            Export Trek History
+
+        </button>
+
+    </div>
+
+    <table class="table table-bordered mt-3">
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Trek</th>
+                <th>Location</th>
+                <th>Difficulty</th>
+                <th>Status</th>
+                <th>Payment</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr v-for="booking in bookings" :key="booking.booking_id">
+
+                <td v-text="booking.booking_id"></td>
+
+                <td v-text="booking.trek_name"></td>
+
+                <td v-text="booking.location"></td>
+
+                <td v-text="booking.difficulty"></td>
+
+                <td v-text="booking.status"></td>
+
+                <td v-text="booking.payment_status"></td>
+
+                <td>
+
+                    <button v-if="booking.status !== 'Cancelled'" class="btn btn-danger btn-sm"
+                        @click="cancelBooking(booking.booking_id)">
+
+                        Cancel
+
+                    </button>
+
+                    <span v-else class="badge bg-secondary">
+
+                        Cancelled
+
+                    </span>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div v-if="downloadFile" class="mt-3">
+
+        <a :href="'/' + downloadFile" download class="btn btn-primary">
+
+            Download CSV
+
+        </a>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/my_bookings.js') }}"></script>
+
+{% endblock %}
