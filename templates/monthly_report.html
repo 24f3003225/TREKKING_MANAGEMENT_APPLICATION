@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="reportApp" class="container mt-4">
+
+    <h2 class="mb-4">
+        Monthly Trekking Report
+    </h2>
+
+    <button class="btn btn-success mb-3" @click="generateReport">
+
+        Generate Monthly Report
+
+    </button>
+
+    <div v-if="loading" class="alert alert-info">
+
+        Generating report...
+
+    </div>
+
+    <table v-if="report" class="table table-bordered">
+
+        <tr>
+            <th>Total Treks</th>
+            <td v-text="report.total_treks"></td>
+        </tr>
+
+        <tr>
+            <th>Total Participants</th>
+            <td v-text="report.total_participants"></td>
+        </tr>
+
+        <tr>
+            <th>Completed Treks</th>
+            <td v-text="report.completed_treks"></td>
+        </tr>
+
+        <tr>
+            <th>Cancelled Bookings</th>
+            <td v-text="report.cancelled_bookings"></td>
+        </tr>
+
+        <tr>
+            <th>Most Popular Trek</th>
+            <td v-text="report.popular_trek"></td>
+        </tr>
+
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/monthly_report.js') }}"></script>
+
+{% endblock %}

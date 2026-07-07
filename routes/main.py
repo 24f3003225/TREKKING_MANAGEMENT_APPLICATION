@@ -15,6 +15,7 @@ def register_page():
 def login_page():
     return render_template("login.html")
 
+
 @main_bp.route("/admin/dashboard")
 def admin_dashboard():
 
@@ -58,3 +59,70 @@ def users_page():
 @main_bp.route("/admin/bookings-page")
 def admin_bookings_page():
     return render_template("bookings.html")
+
+@main_bp.route("/user/dashboard")
+def user_dashboard():
+    return render_template("user_dashboard.html")
+
+@main_bp.route("/user/treks-page")
+def user_treks_page():
+    return render_template("user_trek.html")
+
+@main_bp.route("/user/bookings")
+def my_bookings_page():
+    return render_template("my_bookings.html")
+
+@main_bp.route("/user/bookings-page")
+def user_bookings_page():
+    return render_template(
+        "my_bookings.html"
+    )
+
+@main_bp.route("/staff/dashboard")
+def staff_dashboard():
+    return render_template(
+        "staff_dashboard.html"
+    )
+
+@main_bp.route("/staff/treks-page")
+def staff_treks_page():
+
+    return render_template(
+        "staff_treks.html"
+    )
+
+@main_bp.route(
+    "/staff/participants-page"
+)
+def participants_page():
+
+    return render_template(
+        "participants.html"
+    )
+
+@main_bp.route(
+    "/staff/update-status-page"
+)
+def update_status_page():
+
+    return render_template(
+        "update_trek_status.html"
+    )
+
+@main_bp.route(
+    "/user/profile-page"
+)
+def profile_page():
+
+    return render_template(
+        "profile.html"
+    )
+
+@main_bp.route(
+    "/staff/update-slots-page"
+)
+def update_slots_page():
+
+    return render_template(
+        "update_slots.html"
+    )
