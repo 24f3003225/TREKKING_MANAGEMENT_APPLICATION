@@ -36,7 +36,6 @@ def dashboard_data():
 
 @staff_bp.route("/my-treks")
 @jwt_required()
-@cache.cached(timeout=120)
 def my_treks():
 
     staff_id = int(get_jwt_identity())
